@@ -14,6 +14,12 @@ export class AppComponent {
   nom:string = "";
   currentRoute:string = "";
 
+  // Variables pour la Toolbar
+  toolbarTitle = 'Assignments App';
+
+  // Variables pour la SideBar
+  isSidenavOpen = false;
+
   constructor(private authService:AuthService, 
               private router:Router,
               private assigmmentsService:AssignmentsService) {
@@ -27,6 +33,10 @@ export class AppComponent {
     });
     
     
+  }
+
+  toggleSidenav() {
+    this.isSidenavOpen = !this.isSidenavOpen;
   }
 
   login() {

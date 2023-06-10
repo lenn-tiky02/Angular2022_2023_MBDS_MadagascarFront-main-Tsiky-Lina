@@ -1,0 +1,23 @@
+mat-list-item:hover {
+    cursor: pointer; 
+    background-color: #7a7474;
+    animation: myAnimation 0.5s;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    vertical-align: middle;
+}
+
+mat-sidenav {
+    width: 280px;
+}
+
+mat-sidenav-content {
+    margin-top: 20px;
+    margin-right: 300px;
+    margin-left: 300px;
+}
