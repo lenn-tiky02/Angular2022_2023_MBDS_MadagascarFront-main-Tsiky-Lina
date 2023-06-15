@@ -33,15 +33,21 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { authGuard } from './shared/auth.guard';
-import { LoginComponent } from './login/login.component';  
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';  
 
 const routes: Routes = [
   {
     path: '',
-    component: AssignmentsComponent
+    component: HomeComponent
   },
   {
     path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'assignments',
     component: AssignmentsComponent
   },
   {
@@ -70,7 +76,9 @@ const routes: Routes = [
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

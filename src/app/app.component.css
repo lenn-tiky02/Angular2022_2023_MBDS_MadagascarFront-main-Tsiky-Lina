@@ -16,8 +16,39 @@ mat-sidenav {
     width: 280px;
 }
 
+
+/* Styles pour les écrans de taille inférieure à 600px */
+@media screen and (max-width: 600px) {
+/* Ajoutez ici les styles pour les petits écrans */
 mat-sidenav-content {
     margin-top: 20px;
-    margin-right: 300px;
-    margin-left: 300px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+}
+
+/* Styles pour les écrans de taille entre 601px et 1024px */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+/* Ajoutez ici les styles pour les écrans de taille moyenne */
+mat-sidenav-content {
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+}
+
+/* Styles pour les écrans de taille supérieure à 1024px */
+@media screen and (min-width: 1025px) {
+/* Ajoutez ici les styles pour les grands écrans */
+mat-sidenav-content {
+    margin-top: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+}
+  
+mat-sidenav-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
