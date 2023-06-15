@@ -14,8 +14,9 @@ assignments:Assignment[] = []
   constructor(private loggingService:LoggingService,
     private http:HttpClient) { }
 
-    //uri_api = 'http://localhost:8010/api/assignments';
-    uri_api = 'https://backend-api-tsiky-lina.onrender.com/api/assignments';
+    // uri_api = 'http://localhost:8010/api/assignments';
+    // uri_api = 'https://backend-api-tsiky-lina.onrender.com/api/assignments';
+    uri_api='https://backend-test-assignment.onrender.com/api/assignments';
 
   getAssignments(page:number, limit:number):Observable<any> {
     // normalement on doit envoyer une requête HTTP
