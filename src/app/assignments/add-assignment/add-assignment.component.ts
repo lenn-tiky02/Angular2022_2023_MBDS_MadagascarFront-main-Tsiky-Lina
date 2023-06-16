@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-assignment',
@@ -16,7 +17,7 @@ export class AddAssignmentComponent {
 
 
   constructor(private assignmentsService: AssignmentsService,
-              private router:Router) { }
+              private router:Router, private snackBar: MatSnackBar) { }
 
   onSubmit(event: any) {
     // On vérifie que les champs ne sont pas vides
@@ -34,11 +35,19 @@ export class AddAssignmentComponent {
     this.assignmentsService.addAssignment(nouvelAssignment)
       .subscribe(message => {
         console.log(message);
-
+        this.openSnackBar('Assignment ajouté avec succès! ', 'x');
         // On va naviguer vers la page d'accueil pour afficher la liste
         // des assignments
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/assignments"]);
 
       });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000, // Durée d'affichage du Snackbar en millisecondes
+      verticalPosition: 'top', // Position verticale (top, bottom)
+      horizontalPosition: 'start', // Position horizontale (start, center, end, left, right)
+    });
   }
 }
