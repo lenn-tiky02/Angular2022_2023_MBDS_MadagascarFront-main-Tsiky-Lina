@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { AssignmentsService } from './shared/assignments.service';
+import { SpinnerService } from './shared/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,8 @@ export class AppComponent {
 
   constructor(private authService:AuthService, 
               private router:Router,
-              private assigmmentsService:AssignmentsService) {
+              private assigmmentsService:AssignmentsService,
+              public spinnerService: SpinnerService) {
     console.log(router.url);
 
     router.events.subscribe(event => {

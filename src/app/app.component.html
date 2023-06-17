@@ -41,5 +41,8 @@
        
     </mat-sidenav-content>
 </mat-sidenav-container>
+<div class="spinner-overlay"  *ngIf="spinnerService.showSpinner">
+    <mat-progress-spinner class="spinner" color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
 
 <app-footer></app-footer>
