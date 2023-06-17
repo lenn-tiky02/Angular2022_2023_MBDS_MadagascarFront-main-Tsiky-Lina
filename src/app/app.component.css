@@ -49,7 +49,7 @@ mat-sidenav-content {
   
 mat-sidenav-container {
     display: flex;
-    min-height: 80vh;
+    min-height: 84vh;
     flex-direction: column;
 }
 .spinner-overlay {

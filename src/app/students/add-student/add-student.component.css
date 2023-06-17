@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    margin:5px;
+}
+
+mat-card-title {
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+}
+
+mat-card-content{
+    padding: 20px;
+}

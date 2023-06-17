@@ -32,12 +32,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { authGuard } from './shared/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';  
+import { FooterComponent } from './footer/footer.component';
+import { StudentsComponent } from './students/students.component';  
+import AddStudentComponent from './students/add-student/add-student.component';
 
 const routes: Routes = [
   {
@@ -47,6 +50,14 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'students',
+    component: StudentsComponent
+  },
+  {
+    path: 'students/add',
+    component: AddStudentComponent
   },
   {
     path: 'assignments',
@@ -80,7 +91,9 @@ const routes: Routes = [
     EditAssignmentComponent,
     LoginComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    StudentsComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +108,8 @@ const routes: Routes = [
     MatToolbarModule,    MatSidenavModule, 
     MatMenuModule, MatTooltipModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
