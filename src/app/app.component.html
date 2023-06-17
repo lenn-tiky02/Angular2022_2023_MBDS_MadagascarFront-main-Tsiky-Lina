@@ -25,17 +25,13 @@
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="isSidenavOpen">              
         <mat-list>
-            <mat-list-item routerLink="/home">              
-                    Accueil
-            </mat-list-item>
+            <mat-list-item routerLink="/home" (click)="toggleSidenav()">Accueil</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>Item 2</mat-list-item>
+            <mat-list-item routerLink="/assignments" (click)="toggleSidenav()">Devoirs</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>Item 2</mat-list-item>
+            <mat-list-item routerLink="/assignments" (click)="toggleSidenav()">Matières</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>Item 2</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Item 2</mat-list-item>
+            <mat-list-item routerLink="/students" (click)="toggleSidenav()">Elèves</mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
                 {{labelConnexion}}
@@ -46,7 +42,11 @@
     <mat-sidenav-content>
       <!-- Contenu principal de l'application -->        
         <router-outlet></router-outlet>
+       
     </mat-sidenav-content>
 </mat-sidenav-container>
+<div class="spinner-overlay"  *ngIf="spinnerService.showSpinner">
+    <mat-progress-spinner class="spinner" color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
 
-
+<app-footer></app-footer>

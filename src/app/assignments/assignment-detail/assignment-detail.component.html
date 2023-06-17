@@ -8,13 +8,13 @@
       Rendu
     </mat-checkbox>
     
-    <button mat-raised-button color="primary"
+    <button mat-raised-button color="accent"
             (click)="onEditAssignment()"
             [disabled]="!isLogged()"
     >
       EDIT
     </button>
 
-  <button mat-raised-button color="accent" (click)="onDeleteAssignment()">DELETE</button>
+  <button mat-raised-button color="warn" (click)="onDeleteAssignment()" [disabled]="!isLogged()">DELETE</button>
   </mat-card-actions>
 </mat-card>

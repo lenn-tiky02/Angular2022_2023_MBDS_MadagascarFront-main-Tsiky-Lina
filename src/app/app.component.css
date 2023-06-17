@@ -16,8 +16,57 @@ mat-sidenav {
     width: 280px;
 }
 
+
+/* Styles pour les écrans de taille inférieure à 600px */
+@media screen and (max-width: 600px) {
+/* Ajoutez ici les styles pour les petits écrans */
 mat-sidenav-content {
     margin-top: 20px;
-    margin-right: 300px;
-    margin-left: 300px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
+}
+
+/* Styles pour les écrans de taille entre 601px et 1024px */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+/* Ajoutez ici les styles pour les écrans de taille moyenne */
+mat-sidenav-content {
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+}
+
+/* Styles pour les écrans de taille supérieure à 1024px */
+@media screen and (min-width: 1025px) {
+/* Ajoutez ici les styles pour les grands écrans */
+mat-sidenav-content {
+    margin-top: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+}
+  
+mat-sidenav-container {
+    display: flex;
+    min-height: 84vh;
+    flex-direction: column;
+}
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .spinner {
+    width: 100px;
+    height: 100px;
+  }
+  

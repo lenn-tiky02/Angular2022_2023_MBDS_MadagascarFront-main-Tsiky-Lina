@@ -30,18 +30,37 @@ import { AssignmentDetailComponent } from './assignments/assignment-detail/assig
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { authGuard } from './shared/auth.guard';
-import { LoginComponent } from './login/login.component';  
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { StudentsComponent } from './students/students.component';  
+import AddStudentComponent from './students/add-student/add-student.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AssignmentsComponent
+    component: HomeComponent
   },
   {
     path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'students',
+    component: StudentsComponent
+  },
+  {
+    path: 'students/add',
+    component: AddStudentComponent
+  },
+  {
+    path: 'assignments',
     component: AssignmentsComponent
   },
   {
@@ -70,7 +89,11 @@ const routes: Routes = [
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    FooterComponent,
+    StudentsComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +106,10 @@ const routes: Routes = [
     MatListModule, MatCardModule, MatCheckboxModule, MatSlideToggleModule,
     MatTableModule, MatPaginatorModule,
     MatToolbarModule,    MatSidenavModule, 
-    MatMenuModule, MatTooltipModule
+    MatMenuModule, MatTooltipModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
+import { SpinnerService } from 'src/app/shared/spinner.service';
 
 @Component({
  selector: 'app-edit-assignment',
@@ -17,7 +18,8 @@ export class EditAssignmentComponent implements OnInit {
  constructor(
    private assignmentsService: AssignmentsService,
    private route: ActivatedRoute,
-   private router: Router
+   private router: Router,
+   private spinnerService: SpinnerService
  ) {}
 
  ngOnInit(): void {
@@ -47,7 +49,9 @@ export class EditAssignmentComponent implements OnInit {
     this.dateDeRendu = assignment.dateDeRendu;
   });
 }
+
 onSaveAssignment() {
+  this.spinnerService.show();
   if (!this.assignment) return;
 
   // on récupère les valeurs dans le formulaire
@@ -58,8 +62,9 @@ onSaveAssignment() {
     .subscribe((message) => {
       console.log(message);
 
+      this.spinnerService.hide();
       // navigation vers la home page
-      this.router.navigate(['/home']);
+      this.router.navigate(['/assignments']);
     });
 }
 }
