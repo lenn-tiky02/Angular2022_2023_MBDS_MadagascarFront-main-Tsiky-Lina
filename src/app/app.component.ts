@@ -44,7 +44,7 @@ export class AppComponent {
   login() {
     // utilise l'authService pour se connecter
     if(!this.authService.loggedIn) {
-      this.authService.logIn();
+      // this.authService.logIn();
       // on change le label du bouton
       this.labelConnexion = "Se déconnecter";
     } else {
