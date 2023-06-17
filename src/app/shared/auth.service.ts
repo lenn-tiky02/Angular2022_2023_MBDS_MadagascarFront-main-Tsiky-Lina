@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -6,16 +9,31 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   loggedIn = false;
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  uri_api = `${environment.base_url}/api/users/login`
 
   // théoriquement, on devrait passer en paramètre le login
   // et le password, cette méthode devrait faire une requête
   // vers un Web Service pour vérifier que c'est ok, renvoyer
   // un token d'authentification JWT etc.
   // elle devrait renvoyer un Observable etc.
-  logIn() {
-    console.log("ON SE LOGGE")
-    this.loggedIn = true;
+  logIn(userName: String, password: String): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.uri_api, { username: userName, password: password }).subscribe(
+        (data: any) => {
+          sessionStorage.setItem("auth_token", data.token);
+          this.loggedIn = true;
+          resolve({ message: "Connection réussie" });
+        }, (err) => {
+          console.log(err);
+          resolve({message:err.error});
+        }
+      );
+    });
+
   }
 
   logOut() {
@@ -29,7 +47,7 @@ export class AuthService {
     // Pour le moment, version simplifiée...
     // on suppose qu'on est admin si on est loggué
     const isUserAdminPromise = new Promise((resolve, reject) => {
-        resolve(this.loggedIn);
+      resolve(this.loggedIn);
     });
 
     // on renvoie la promesse qui dit si on est admin ou pas

@@ -7,25 +7,24 @@
     <div class="col">
         <mat-card>
             <mat-card-content>
-                <form>
                     <div class="form-group">
                         <label for="email">Email/User name</label>
-                        <input type="email" id="email" class="form-control" placeholder="Entrez votre email/User name" required>
+                        <input type="email" id="email" class="form-control" placeholder="Entrez votre email/User name" required [(ngModel)]="username">
                     </div> 
                     
                     <br>
                     <div class="form-group">
                         <label for="password">Mot de passe</label>
-                        <input type="password" id="password" class="form-control" placeholder="Entrez votre mot de passe" required>
+                        <input type="password" id="password" class="form-control" placeholder="Entrez votre mot de passe" required [(ngModel)]="password">
                     </div>
                     <br>                   
-                </form>
                 
-                <button mat-raised-button color="primary">
+                <button mat-raised-button color="primary" (click)="login()">
                     Se connecter
                  </button>
+                 <mat-error>{{error}}</mat-error>
             </mat-card-content>
-        </mat-card>    
+        </mat-card>
     </div>
     <div class="col">    
     </div>

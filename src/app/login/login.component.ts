@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+  username!:String;
+  password!:String ;
+  error!:String;
+  constructor(
+    private auth:AuthService
+  ){}
+  ngOnInit(): void {
+  }
 
+
+  login():void{
+    this.auth.logIn(this.username,this.password)
+    .then((value:any)=>{
+      this.error=value.message;
+    });
+  }
 }
