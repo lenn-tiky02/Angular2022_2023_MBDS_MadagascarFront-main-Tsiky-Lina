@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -10,7 +11,8 @@ export class AuthService {
   loggedIn = false;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   uri_api = `${environment.base_url}/api/users/login`
@@ -27,9 +29,10 @@ export class AuthService {
           sessionStorage.setItem("auth_token", data.token);
           this.loggedIn = true;
           resolve({ message: "Connection réussie" });
+          this.router.navigate(['/']);
         }, (err) => {
-          console.log(err);
-          resolve({message:err.error});
+          sessionStorage.removeItem('auth_token');
+          resolve({ message: err.error });
         }
       );
     });
@@ -37,9 +40,9 @@ export class AuthService {
   }
 
   logOut() {
-    console.log("ON SE DELOGGE")
-
+    sessionStorage.removeItem('auth_token');
     this.loggedIn = false;
+    this.router.navigate(['/']);
   }
 
   // si on l'utilisait on ferai isAdmin().then(...)
