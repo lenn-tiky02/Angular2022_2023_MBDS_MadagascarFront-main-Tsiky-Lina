@@ -31,6 +31,7 @@ export class AuthService {
           resolve({ message: "Connection réussie" });
           this.router.navigate(['/']);
         }, (err) => {
+          this.loggedIn=false;
           sessionStorage.removeItem('auth_token');
           resolve({ message: err.error });
         }

@@ -53,23 +53,28 @@ const routes: Routes = [
   },
   {
     path: 'students',
-    component: StudentsComponent
+    component: StudentsComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'students/add',
-    component: AddStudentComponent
+    component: AddStudentComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'assignments',
-    component: AssignmentsComponent
+    component: AssignmentsComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'add',
-    component: AddAssignmentComponent
+    component: AddAssignmentComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'assignments/:id',
-    component: AssignmentDetailComponent
+    component: AssignmentDetailComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'assignments/:id/edit',
