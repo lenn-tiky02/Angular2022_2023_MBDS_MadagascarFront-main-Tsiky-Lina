@@ -32,7 +32,9 @@
           <input matInput formControlName="picture" required>
           <mat-error *ngIf="picture?.invalid && (picture?.dirty || picture?.touched)">Vous devez uploader une image.</mat-error>
         </mat-form-field>
-  
+
+        <app-image-uploader></app-image-uploader>
+        
         <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
       </form>
     </mat-card-content>

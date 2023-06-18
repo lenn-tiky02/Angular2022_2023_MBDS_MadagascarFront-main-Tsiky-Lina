@@ -1,0 +1,8 @@
+<ngx-dropzone (change)="onSelect($event)" [multiple]="isMultiple" accept="image/jpeg,image/jpg,image/png,image/gif">
+	<ngx-dropzone-label>Drop pictures here !</ngx-dropzone-label>
+	<ngx-dropzone-image-preview *ngFor="let f of files;let i = index" [file]="f" >
+		<ngx-dropzone-label *ngIf="!fileURL[i]">
+			<mat-spinner [diameter]="50"></mat-spinner> 
+		</ngx-dropzone-label>
+	</ngx-dropzone-image-preview>
+</ngx-dropzone>

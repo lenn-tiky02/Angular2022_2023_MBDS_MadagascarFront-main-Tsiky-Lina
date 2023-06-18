@@ -33,6 +33,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { authGuard } from './shared/auth.guard';
@@ -41,7 +42,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { StudentsComponent } from './students/students.component';  
 import AddStudentComponent from './students/add-student/add-student.component';
-
+import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 const routes: Routes = [
   {
     path: '',
@@ -98,7 +99,8 @@ const routes: Routes = [
     HomeComponent,
     FooterComponent,
     StudentsComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    ImageUploaderComponent
   ],
   imports: [
     BrowserModule,
@@ -114,7 +116,8 @@ const routes: Routes = [
     MatMenuModule, MatTooltipModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]
