@@ -1,31 +1,47 @@
-<span>
-    <button mat-raised-button routerLink="/matieres/add">Ajouter</button>
-</span>
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+       <h2>Liste des Matières</h2> 
+      </div>
+      <div class="col-sm">        
+      </div>
+      <div class="col-sm" style="text-align: right;">
+        <button mat-flat-button color="primary" routerLink="/matieres/add">Ajouter</button>  
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="row" style="padding-top: 30px;">   
+        
+        <table mat-table [dataSource]="data.docs" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nom </th>
+                <td mat-cell *matCellDef="let element" routerLink="/matieres/{{element._id}}"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="matierePicture">
+                <th mat-header-cell *matHeaderCellDef> Photo de la matiere </th>
+                <td mat-cell *matCellDef="let element" (click)="openDialog(element,true)">            
+                    <img src="{{element.matierePicture}}" alt="photo etudiant" class="circular-image" > 
+                </td>
+            </ng-container>
 
-<table mat-table [dataSource]="data.docs" class="mat-elevation-z8">
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Nom </th>
-        <td mat-cell *matCellDef="let element" routerLink="/matieres/{{element._id}}"> {{element.name}} </td>
-    </ng-container>
-    <ng-container matColumnDef="matierePicture">
-        <th mat-header-cell *matHeaderCellDef> Photo de la matiere </th>
-        <td mat-cell *matCellDef="let element" routerLink="/matieres/{{element._id}}"> <img src="{{element.matierePicture}}" alt="">  </td>
-    </ng-container>
+            <ng-container matColumnDef="profPicture">
+                <th mat-header-cell *matHeaderCellDef> Classe </th>
+                <td mat-cell *matCellDef="let element" (click)="openDialog(element,false)">            
+                    <img src="{{element.profPicture}}" alt="photo etudiant" class="circular-image" > 
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
 
-    <ng-container matColumnDef="profPicture">
-        <th mat-header-cell *matHeaderCellDef> Classe </th>
-        <td mat-cell *matCellDef="let element" routerLink="/matieres/{{element._id}}"> <img src="{{element.profPicture}}" alt="">  </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-<mat-paginator 
-    [pageSizeOptions]="[5, 10, 20]" 
-    showFirstLastButtons 
-    aria-label="Selection de la page des étudiants"
-    (page)="handlePage($event)" 
-    class="demo-paginator" 
-    [length]="data.totalDocs" 
-    [pageSize]="data.limit" 
-    [pageIndex]="data.page">
+        <mat-paginator 
+            [pageSizeOptions]="[5, 10, 20]" 
+            showFirstLastButtons 
+            aria-label="Selection de la page des étudiants"
+            (page)="handlePage($event)" 
+            class="demo-paginator" 
+            [length]="data.totalDocs" 
+            [pageSize]="data.limit" 
+            [pageIndex]="data.page"></mat-paginator>
+    </div>
+</div>

@@ -4,6 +4,7 @@ import { Student } from './student.model';
 import { Pagination } from 'src/app/helper/pagination.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDataDialogComponent } from 'src/app/dialog-data-dialog/dialog-data-dialog.component';
+import { DataDialog } from '../dialog-data-dialog/data-dialog.model';
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -39,6 +40,9 @@ export class StudentsComponent implements OnInit{
   }
 
   openDialog(student: Student) {
-    this.dialog.open(DialogDataDialogComponent, { data: student});
+    let dataDialog: DataDialog = new DataDialog();
+    dataDialog.name = student.name + ' ' + student.firstname;
+    dataDialog.picture = student.picture;
+    this.dialog.open(DialogDataDialogComponent, { data: dataDialog});
   }
 }

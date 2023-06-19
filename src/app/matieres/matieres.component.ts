@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Pagination } from 'src/app/helper/pagination.model';
 import { Matiere } from './matieres.model';
 import { MatieresService } from '../shared/matieres.service';
+import { DataDialog } from '../dialog-data-dialog/data-dialog.model';
+import { DialogDataDialogComponent } from '../dialog-data-dialog/dialog-data-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-matieres',
@@ -12,7 +15,8 @@ export class MatieresComponent implements OnInit{
   data:Pagination<Matiere> = new Pagination<Matiere>();
   displayedColumns:string[] = ['name','matierePicture','profPicture'];
   constructor(
-    private matiereService:MatieresService
+    private matiereService:MatieresService,
+    public dialog: MatDialog
   ){}
   ngOnInit(): void {
     this.getMatierePaginated();
@@ -32,5 +36,17 @@ export class MatieresComponent implements OnInit{
     let page = event.pageIndex;
     let limit = event.pageSize;
     this.getMatierePaginated(page,limit);
+  }
+  
+  openDialog(matiere: Matiere, isPicMatiere: Boolean) {
+    let dataDialog: DataDialog = new DataDialog();
+    dataDialog.name = matiere.name;
+    if(isPicMatiere){
+      dataDialog.picture = matiere.matierePicture;
+
+    }else{
+      dataDialog.picture = matiere.profPicture;
+    }
+    this.dialog.open(DialogDataDialogComponent, { data: dataDialog});
   }
 }
