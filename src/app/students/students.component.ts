@@ -11,7 +11,7 @@ import { Pagination } from 'src/app/helper/pagination.model';
 export class StudentsComponent implements OnInit{
   data:Pagination<Student>=new Pagination<Student>();
   docs:Student[]=[];
-  displayedColumns: string[] = ['_id' ,'id' ,'name' ,'firstname' ,'class' ,'year' ,'picture' ];
+  displayedColumns: string[] = [  'name' ,'firstname' ,'class' ,'year' ,'picture'  ];
   constructor(
     private studentsService:StudentsService
   ){}
@@ -19,15 +19,21 @@ export class StudentsComponent implements OnInit{
     this.getStudentPaginated();
   }
 
-  getStudentPaginated(page:number=1,limit:number=10){
+  getStudentPaginated(page:number=1,limit:number=5){
     this.studentsService.getStudents(page,limit).subscribe(
       (data:Pagination<Student>)=>{
         this.data = data;
-        this.docs = data.docs;
       },(err)=>{
         console.log(err);
       }
     );
+  }
+
+  handlePage(event: any) {
+   
+    let page = event.pageIndex;
+    let limit = event.pageSize;
+    this.getStudentPaginated(page,limit);
   }
 
 }
