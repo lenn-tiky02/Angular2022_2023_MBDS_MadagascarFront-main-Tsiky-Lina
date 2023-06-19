@@ -47,6 +47,7 @@ import { ImageUploaderComponent } from './image-uploader/image-uploader.componen
 import { NotConnectedComponent } from './component/not-connected/not-connected.component';
 import { ConnectedDialogComponent } from './component/connected-dialog/connected-dialog.component';
 import { loginGuard } from './shared/login.guard';
+import { Pagination } from './helper/Pagination.model';
 const routes: Routes = [
   {
     path: '',
@@ -126,7 +127,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     NgxDropzoneModule
   ],
-  providers: [],
+  providers: [
+    Pagination
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
