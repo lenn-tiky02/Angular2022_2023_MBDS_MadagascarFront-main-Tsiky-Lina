@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../shared/students.service';
 import { Student } from './student.model';
 import { Pagination } from 'src/app/helper/pagination.model';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDataDialogComponent } from 'src/app/dialog-data-dialog/dialog-data-dialog.component';
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -13,8 +14,10 @@ export class StudentsComponent implements OnInit{
   docs:Student[]=[];
   displayedColumns: string[] = [  'name' ,'firstname' ,'class' ,'year' ,'picture'  ];
   constructor(
-    private studentsService:StudentsService
+    private studentsService:StudentsService,
+    public dialog: MatDialog
   ){}
+
   ngOnInit(): void {
     this.getStudentPaginated();
   }
@@ -36,4 +39,7 @@ export class StudentsComponent implements OnInit{
     this.getStudentPaginated(page,limit);
   }
 
+  openDialog(student: Student) {
+    this.dialog.open(DialogDataDialogComponent, { data: student});
+  }
 }

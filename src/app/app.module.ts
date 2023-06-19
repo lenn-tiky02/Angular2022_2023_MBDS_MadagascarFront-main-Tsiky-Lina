@@ -48,6 +48,7 @@ import { NotConnectedComponent } from './component/not-connected/not-connected.c
 import { ConnectedDialogComponent } from './component/connected-dialog/connected-dialog.component';
 import { loginGuard } from './shared/login.guard';
 import { NoterDevoirComponent } from './noter-devoir/noter-devoir.component';
+import { DialogDataDialogComponent } from './dialog-data-dialog/dialog-data-dialog.component';
 const routes: Routes = [
   {
     path: '',
@@ -114,7 +115,8 @@ const routes: Routes = [
     ImageUploaderComponent,
     NotConnectedComponent,
     ConnectedDialogComponent,
-    NoterDevoirComponent
+    NoterDevoirComponent,
+    DialogDataDialogComponent
   ],
   imports: [
     BrowserModule,
