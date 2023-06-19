@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../shared/students.service';
 import { Student } from './student.model';
-import { Pagination } from '../helper/Pagination.model';
-import { MatTableModule } from '@angular/material/table';
+import { Pagination } from 'src/app/helper/pagination.model';
 
 @Component({
   selector: 'app-students',
@@ -11,7 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 })
 export class StudentsComponent implements OnInit{
   data:Pagination<Student>=new Pagination<Student>();
-  docs:Student[] = [];
+  docs:Student[]=[];
+  displayedColumns: string[] = ['_id' ,'id' ,'name' ,'firstname' ,'class' ,'year' ,'picture' ];
   constructor(
     private studentsService:StudentsService
   ){}
