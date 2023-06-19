@@ -9,7 +9,7 @@
                 [cdkDropListConnectedTo]="[doneList]"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.nom}}</div>
             </div>
       </div>
       <div class="col-sm">                    
@@ -22,7 +22,7 @@
                 [cdkDropListConnectedTo]="[todoList]"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.nom}}</div>
             </div>
             </div>
     </div>
