@@ -2,11 +2,9 @@
     display:flex;
     flex-direction:column;
 }
-
-.ajouterBtn {
-    align-self: flex-end;
+.styleHead{
+  display: inline-block;
 }
-
 .example-viewport {
     height: 600px;
     width: 1600px;

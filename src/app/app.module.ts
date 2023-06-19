@@ -35,7 +35,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { authGuard } from './shared/auth.guard';
 import { LoginComponent } from './login/login.component';
@@ -47,6 +47,7 @@ import { ImageUploaderComponent } from './image-uploader/image-uploader.componen
 import { NotConnectedComponent } from './component/not-connected/not-connected.component';
 import { ConnectedDialogComponent } from './component/connected-dialog/connected-dialog.component';
 import { loginGuard } from './shared/login.guard';
+import { NoterDevoirComponent } from './noter-devoir/noter-devoir.component';
 const routes: Routes = [
   {
     path: '',
@@ -69,6 +70,11 @@ const routes: Routes = [
   {
     path: 'assignments',
     component: AssignmentsComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'markAssignments',
+    component: NoterDevoirComponent,
     canActivate: [authGuard]
   },
   {
@@ -107,7 +113,8 @@ const routes: Routes = [
     AddStudentComponent,
     ImageUploaderComponent,
     NotConnectedComponent,
-    ConnectedDialogComponent
+    ConnectedDialogComponent,
+    NoterDevoirComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +131,8 @@ const routes: Routes = [
     MatSnackBarModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
