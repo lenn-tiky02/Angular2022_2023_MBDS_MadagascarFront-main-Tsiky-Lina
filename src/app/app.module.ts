@@ -49,6 +49,8 @@ import { ConnectedDialogComponent } from './component/connected-dialog/connected
 import { loginGuard } from './shared/login.guard';
 import { NoterDevoirComponent } from './noter-devoir/noter-devoir.component';
 import { DialogDataDialogComponent } from './dialog-data-dialog/dialog-data-dialog.component';
+import { MatieresComponent } from './matieres/matieres.component';
+import { AddMatiereComponent } from './matieres/add-matiere/add-matiere.component';
 const routes: Routes = [
   {
     path: '',
@@ -67,6 +69,16 @@ const routes: Routes = [
     path: 'students/add',
     component: AddStudentComponent,
     canActivate: [authGuard]
+  },
+  {
+    path:'matieres',
+    component:MatieresComponent,
+    canActivate:[authGuard]
+  },
+  {
+    path:'matieres/add',
+    component:AddMatiereComponent,
+    canActivate:[authGuard]
   },
   {
     path: 'assignments',
@@ -116,7 +128,9 @@ const routes: Routes = [
     NotConnectedComponent,
     ConnectedDialogComponent,
     NoterDevoirComponent,
-    DialogDataDialogComponent
+    DialogDataDialogComponent,
+    MatieresComponent,
+    AddMatiereComponent
   ],
   imports: [
     BrowserModule,

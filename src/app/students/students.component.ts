@@ -11,7 +11,6 @@ import { DialogDataDialogComponent } from 'src/app/dialog-data-dialog/dialog-dat
 })
 export class StudentsComponent implements OnInit{
   data:Pagination<Student>=new Pagination<Student>();
-  docs:Student[]=[];
   displayedColumns: string[] = [  'name' ,'firstname' ,'class' ,'year' ,'picture'  ];
   constructor(
     private studentsService:StudentsService,
