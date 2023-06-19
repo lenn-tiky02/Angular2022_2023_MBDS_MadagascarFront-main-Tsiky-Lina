@@ -4,6 +4,7 @@ import { Observable, catchError, forkJoin, map, of, tap } from 'rxjs';
 import { LoggingService } from './logging.service';
 import { HttpClient } from '@angular/common/http';
 import { bdInitialAssignments } from './data';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ Students:Student[] = []
     private http:HttpClient) { }
 
     //uri_api = 'http://localhost:8010/api/students';
-    uri_api = 'https://backend-api-tsiky-lina.onrender.com/api/students';
+    uri_api = `${environment.base_url}/api/students`;
 
   getStudents(page:number, limit:number):Observable<any> {
     // normalement on doit envoyer une requête HTTP

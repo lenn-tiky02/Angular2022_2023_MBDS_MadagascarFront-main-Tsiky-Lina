@@ -1,5 +1,11 @@
-<p>students works!</p>
 
 <span>
     <button mat-raised-button  routerLink="/students/add" >Ajouter</button>
 </span>  
+
+<table mat-table [dataSource]="docs" class="mat-elevation-z8">
+    <!-- <ng-container matColumnDef="name"> -->
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    <!-- </ng-container> -->
+</table>
