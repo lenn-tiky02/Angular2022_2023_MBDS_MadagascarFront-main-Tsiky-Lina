@@ -2,10 +2,11 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NotConnectedComponent } from '../component/not-connected/not-connected.component';
+import { ConnectedDialogComponent } from '../component/connected-dialog/connected-dialog.component';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  
+
+export const loginGuard: CanActivateFn = (route, state) => {
+
   // injection par programme (au lieu de le faire dans 
   // le constructeur d'un composant)
   let authService = inject(AuthService);
@@ -15,14 +16,14 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   // si ça renvoie true, alors, on peut activer la route
   return authService.isAdmin()
-  .then(authentifie => {
-    if(authentifie) {
-      return true;
-    } else {
-      dialog.open(NotConnectedComponent);
-      // et on retourne vers la page d'accueil
-      router.navigate(["/login"]);
-      return false;
-    }
-  });
+    .then(authentifie => {
+      if (authentifie) {
+        dialog.open(ConnectedDialogComponent);
+        // et on retourne vers la page d'accueil
+        router.navigate(["/home"]);
+        return false;
+      } else {
+        return true;
+      }
+    });
 };

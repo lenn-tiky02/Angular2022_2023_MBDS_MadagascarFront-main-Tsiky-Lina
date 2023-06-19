@@ -8,10 +8,7 @@
     <span class="example-spacer"></span>
    
     <span *ngIf="currentRoute !== '/login'">
-        <a routerLink="/login">
-            <button mat-raised-button (click)="login()">{{labelConnexion}}</button>
-        </a>
-        
+        <button mat-raised-button (click)="login()">{{labelConnexion}}</button>
     </span>  
     &nbsp;&nbsp;
     <span *ngIf="isLogged()"> 

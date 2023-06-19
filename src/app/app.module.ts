@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
@@ -43,6 +44,9 @@ import { FooterComponent } from './footer/footer.component';
 import { StudentsComponent } from './students/students.component';  
 import AddStudentComponent from './students/add-student/add-student.component';
 import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
+import { NotConnectedComponent } from './component/not-connected/not-connected.component';
+import { ConnectedDialogComponent } from './component/connected-dialog/connected-dialog.component';
+import { loginGuard } from './shared/login.guard';
 const routes: Routes = [
   {
     path: '',
@@ -84,7 +88,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate : [loginGuard]
   }
 ]
 @NgModule({
@@ -100,7 +105,9 @@ const routes: Routes = [
     FooterComponent,
     StudentsComponent,
     AddStudentComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    NotConnectedComponent,
+    ConnectedDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -108,7 +115,7 @@ const routes: Routes = [
     FormsModule, RouterModule.forRoot(routes),
     HttpClientModule,
     MatNativeDateModule, ScrollingModule,
-    MatButtonModule, MatIconModule, MatDividerModule,
+    MatButtonModule, MatIconModule, MatDividerModule, MatDialogModule, 
     MatInputModule, MatFormFieldModule, MatDatepickerModule,
     MatListModule, MatCardModule, MatCheckboxModule, MatSlideToggleModule,
     MatTableModule, MatPaginatorModule,

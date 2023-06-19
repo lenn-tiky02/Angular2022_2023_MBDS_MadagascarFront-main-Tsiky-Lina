@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageUploaderService {  
 
-  //uri_api = 'http://localhost:8010';
-  uri_api = 'https://backend-api-tsiky-lina.onrender.com';
+  uri_api = environment.base_url;
 
 	constructor(
 		private http: HttpClient

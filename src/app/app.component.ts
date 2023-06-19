@@ -25,7 +25,6 @@ export class AppComponent {
               private router:Router,
               private assigmmentsService:AssignmentsService,
               public spinnerService: SpinnerService) {
-    console.log(router.url);
 
     router.events.subscribe(event => {
       if(event instanceof NavigationEnd) {
@@ -44,9 +43,7 @@ export class AppComponent {
   login() {
     // utilise l'authService pour se connecter
     if(!this.authService.loggedIn) {
-      // this.authService.logIn();
-      // on change le label du bouton
-      this.labelConnexion = "Se déconnecter";
+      this.router.navigate(['/login'])
     } else {
       this.authService.logOut();
       // et on navigue vers la page d'accueil
@@ -57,6 +54,9 @@ export class AppComponent {
   isLogged() {
     if(this.authService.loggedIn) {
       this.nom = "Michel Buffa";
+      this.labelConnexion="Se déconnecter";
+    }else {
+      this.labelConnexion = "Se connecter";
     }
     return this.authService.loggedIn;
   }

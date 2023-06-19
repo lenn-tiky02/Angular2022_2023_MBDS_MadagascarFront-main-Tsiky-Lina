@@ -31,7 +31,7 @@ export class AuthService {
           resolve({ message: "Connection réussie" });
           this.router.navigate(['/']);
         }, (err) => {
-          this.loggedIn=false;
+          this.loggedIn = false;
           sessionStorage.removeItem('auth_token');
           resolve({ message: err.error });
         }
@@ -51,6 +51,7 @@ export class AuthService {
     // Pour le moment, version simplifiée...
     // on suppose qu'on est admin si on est loggué
     const isUserAdminPromise = new Promise((resolve, reject) => {
+      this.loggedIn = sessionStorage.getItem("auth_token")!==null;
       resolve(this.loggedIn);
     });
 
