@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export default class AddStudentComponent {
   studentForm! : FormGroup;
+  url!:string;
 
   constructor(private formBuilder: FormBuilder,
     private studentsService: StudentsService, 
@@ -25,8 +26,7 @@ export default class AddStudentComponent {
       name: ['', Validators.required],
       firstname: ['', Validators.required],
       class: ['', Validators.required],
-      year: ['', Validators.required],
-      picture: ['', Validators.required]
+      year: ['', Validators.required]
     });
   }
 
@@ -36,12 +36,19 @@ export default class AddStudentComponent {
   get year() { return this.studentForm.get('year'); }
   get picture() { return this.studentForm.get('picture'); }
 
-  submitForm() {
-    
+  submitForm() {    
+
     if (this.studentForm.valid) {
+      
       const student: Student = this.studentForm.value;
       // You can now use the student object or perform any required actions with the data
       console.log(student);
+      if(this.url){
+        student.picture = this.url;
+      }else{
+        this.openSnackBar('Veulez vérifier les informations! ', 'x');
+        return ;  
+      }
       
       // on demande au service d'ajouter l'Student
       this.studentsService.addStudent(student)
@@ -66,5 +73,10 @@ export default class AddStudentComponent {
       verticalPosition: 'top', // Position verticale (top, bottom)
       horizontalPosition: 'start', // Position horizontale (start, center, end, left, right)
     });
+  }
+
+
+  urlsUploaded(data:Array<string>):void{ 
+    this.url = data[0];
   }
 }

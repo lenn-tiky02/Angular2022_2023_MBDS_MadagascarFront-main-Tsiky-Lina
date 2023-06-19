@@ -22,7 +22,7 @@ export class AuthService {
   // vers un Web Service pour vérifier que c'est ok, renvoyer
   // un token d'authentification JWT etc.
   // elle devrait renvoyer un Observable etc.
-  logIn(userName: String, password: String): Promise<any> {
+  logIn(userName: string, password: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.post(this.uri_api, { username: userName, password: password }).subscribe(
         (data: any) => {
