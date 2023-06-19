@@ -45,6 +45,16 @@
             <th mat-header-cell *matHeaderCellDef> Rendu </th>
             <td mat-cell *matCellDef="let element" routerLink="/assignments/{{element.id}}"> {{element.rendu}} </td>
           </ng-container>
+
+          <ng-container matColumnDef="matiere">
+            <th mat-header-cell *matHeaderCellDef> Matiere </th>
+            <td mat-cell *matCellDef="let element" routerLink="/assignments/{{element.id}}"> {{element.matiere[0]?.name}} <img src="{{element.matiere[0]?.matierePicture}}" alt=""> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="auteur">
+            <th mat-header-cell *matHeaderCellDef> Auteur </th>
+            <td mat-cell *matCellDef="let element" routerLink="/assignments/{{element.id}}"> {{element.auteur[0]?.name}} <img src="{{element.auteur[0]?.picture}}" alt=""> </td>
+          </ng-container>
         
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

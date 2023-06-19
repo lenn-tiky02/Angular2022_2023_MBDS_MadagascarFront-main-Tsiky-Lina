@@ -14,7 +14,7 @@ export class AssignmentsComponent implements OnInit {
   // les données à afficher
   assignments:Assignment[] = [];
   // Pour la data table
-  displayedColumns: string[] = ['id', 'nom', 'dateDeRendu', 'rendu'];
+  displayedColumns: string[] = ['id', 'nom', 'matiere','dateDeRendu', 'rendu','auteur'];
 
   // propriétés pour la pagination
   page: number=1;
