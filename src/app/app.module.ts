@@ -52,6 +52,7 @@ import { NoterDevoirComponent } from './noter-devoir/noter-devoir.component';
 import { DialogDataDialogComponent } from './dialog-data-dialog/dialog-data-dialog.component';
 import { MatieresComponent } from './matieres/matieres.component';
 import { AddMatiereComponent } from './matieres/add-matiere/add-matiere.component';
+import { DialogNoterDevoirComponent } from './dialog-noter-devoir/dialog-noter-devoir.component';
 const routes: Routes = [
   {
     path: '',
@@ -131,7 +132,8 @@ const routes: Routes = [
     NoterDevoirComponent,
     DialogDataDialogComponent,
     MatieresComponent,
-    AddMatiereComponent
+    AddMatiereComponent,
+    DialogNoterDevoirComponent
   ],
   imports: [
     BrowserModule,
@@ -149,7 +151,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     NgxDropzoneModule,
-    DragDropModule
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

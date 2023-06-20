@@ -9,7 +9,17 @@
                 [cdkDropListConnectedTo]="[doneList]"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.nom}}</div>
+                <div class="example-box" *ngFor="let item of todo" cdkDrag>
+                    <mat-card>
+                        <p>{{item.nom}}</p>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <p>    
+                            Note: {{item.note}}  <br> 
+                            Date: {{item.dateDeRendu}}                            
+                        </p>
+                    </mat-card>                    
+                </div>
             </div>
       </div>
       <div class="col-sm">                    
@@ -22,7 +32,17 @@
                 [cdkDropListConnectedTo]="[todoList]"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.nom}}</div>
+                <div class="example-box" *ngFor="let item of done" cdkDrag>
+                    <mat-card>
+                        <p>{{item.nom}}</p>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <p>    
+                            Note: {{item.note}}  <br> 
+                            Date: {{item.dateDeRendu}}                            
+                        </p>
+                    </mat-card>   
+                </div>
             </div>
             </div>
     </div>

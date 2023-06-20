@@ -10,6 +10,8 @@ import {
 } from '@angular/cdk/drag-drop';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from '../assignments/assignment.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogNoterDevoirComponent } from '../dialog-noter-devoir/dialog-noter-devoir.component';
 
 @Component({
   selector: 'app-noter-devoir',
@@ -21,7 +23,8 @@ export class NoterDevoirComponent {
 
   done:Assignment[] = [];
 
-  constructor(private assignmentsService:AssignmentsService) {    
+  constructor(private assignmentsService:AssignmentsService,
+    public dialog: MatDialog) {    
   }
   
   ngOnInit(): void {
@@ -37,13 +40,13 @@ export class NoterDevoirComponent {
   getAssignments() {
     console.log("On va chercher les assignments dans le service");
 
-    this.assignmentsService.getAssignmentsByRendu(true)
+    this.assignmentsService.getAssignmentsByRendu(false)
     .subscribe(data => {
       this.todo = data;
       console.log("Données reçues");
     });
 
-    this.assignmentsService.getAssignmentsByRendu(false)
+    this.assignmentsService.getAssignmentsByRendu(true)
     .subscribe(data => {
       this.done = data;
       console.log("Données reçues");
@@ -54,13 +57,59 @@ export class NoterDevoirComponent {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      let idCom = event.previousContainer.data[event.previousIndex]._id;
+      console.log('$$$$$$$$')
+      var devoir: Assignment = event.previousContainer.data[event.previousIndex];
+      
+      console.log(devoir);
+      this.openDialog(devoir);
+
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
       );
+      //this.onSaveAssignment(devoir, true, 2);
+     
     }
-    this.ngOnInit();
+   
+  }
+  /*
+    changeStatusCommande(idCommande: String | null, status: String): void {  
+      this.assignmentsService.getAssignment(idCommande).subscribe((data : CommandeAddDetails) => {
+        data.statut = status;
+        data.idLivreur = this.auth.getUserRoles()[0].roleid;
+        data.dateLivraison = new Date();
+        this.commandeService.modifierCommande(data).subscribe((data : CommandeAddDetails) => { console.log('Done')});
+      });
+    }
+    */
+  onSaveAssignment(assignment: Assignment, rendu:boolean, note:Number) { 
+    console.log('assignment');
+    console.log(assignment);
+    var devoir = new Assignment();
+    devoir = assignment;
+    devoir.rendu = rendu;
+    this.openDialog(devoir);
+   /* this.assignmentsService
+      .updateAssignment(devoir)
+      .subscribe((message) => {
+        console.log(message);
+        this.ngOnInit();
+      });*/
+  }
+
+  openDialog(assignment: Assignment): void {
+    const dialogRef = this.dialog.open(DialogNoterDevoirComponent, {
+      data: assignment,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+      console.log(result);
+    //  this.assignment = result;
+    });
   }
 }
