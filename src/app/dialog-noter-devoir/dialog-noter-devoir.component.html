@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{data.nom}}</h1>
+<h1 mat-dialog-title>Devoir : {{data.nom}} <img [src]="data.matiere?.at(0)?.matierePicture" alt="" class="circular-image"></h1>
 <div mat-dialog-content>
   <p>Quel note attribuez vous à ce devoir?</p>
   <mat-form-field>
@@ -7,6 +7,6 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.nom" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button [mat-dialog-close]="data.nom" cdkFocusInitial>Soumettre</button>
 </div>

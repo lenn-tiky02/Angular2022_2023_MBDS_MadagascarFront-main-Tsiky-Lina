@@ -62,18 +62,21 @@ export class NoterDevoirComponent {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       let idCom = event.previousContainer.data[event.previousIndex]._id;
-      console.log('$$$$$$$$')
       var devoir: Assignment = event.previousContainer.data[event.previousIndex];
       
       console.log(devoir);
-      this.openDialog(devoir);
+      this.openDialog(devoir).then(data=>{
+        if(data){
+          transferArrayItem(
+            event.previousContainer.data,
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex,
+          );
+        }
+      });
 
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
+
       //this.onSaveAssignment(devoir, true, 2);
      
     }
@@ -104,17 +107,21 @@ export class NoterDevoirComponent {
       });*/
   }
 
-  openDialog(assignment: Assignment): void {
-    const dialogRef = this.dialog.open(DialogNoterDevoirComponent, {
-      data: assignment,
+  openDialog(assignment: Assignment): Promise<any> {
+    return new Promise((resolve,reject)=>{
+      const dialogRef = this.dialog.open(DialogNoterDevoirComponent, {
+        data: assignment,
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        
+        console.log(result);
+        resolve(result!==undefined)
+      //  this.assignment = result;
+      });
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      
-      console.log(result);
-    //  this.assignment = result;
-    });
   }
 
   handlePageTodo(event: any) {
