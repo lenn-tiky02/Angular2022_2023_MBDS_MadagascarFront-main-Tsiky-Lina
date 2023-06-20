@@ -21,8 +21,9 @@ import { Pagination } from '../helper/pagination.model';
 })
 export class NoterDevoirComponent {
   todo:Assignment[] = [];
-
+  dataTodo!:Pagination<Assignment>;
   done:Assignment[] = [];
+  dataDone!:Pagination<Assignment>;
 
   constructor(private assignmentsService:AssignmentsService,
     public dialog: MatDialog) {    
@@ -43,12 +44,14 @@ export class NoterDevoirComponent {
 
     this.assignmentsService.getAssignmentsByRendu(false)
     .subscribe((data:Pagination<Assignment>) => {
+      this.dataTodo = data;
       this.todo = data.docs;
       console.log("Données reçues");
     });
 
     this.assignmentsService.getAssignmentsByRendu(true)
     .subscribe((data:Pagination<Assignment>) => {
+      this.dataDone = data;
       this.done = data.docs;
       console.log("Données reçues");
     });
@@ -111,6 +114,36 @@ export class NoterDevoirComponent {
       
       console.log(result);
     //  this.assignment = result;
+    });
+  }
+
+  handlePageTodo(event: any) {
+   
+    let page = event.pageIndex;
+    let limit = event.pageSize;
+
+    this.assignmentsService.getAssignmentsByRendu(false,page,limit)
+    .subscribe((data:Pagination<Assignment>) => {
+      this.dataTodo = data;
+      this.todo = data.docs;
+      console.log("Données reçues");
+    });
+
+
+  }
+
+  handlePageDone(event: any) {
+   
+    let page = event.pageIndex;
+    let limit = event.pageSize;
+
+
+
+    this.assignmentsService.getAssignmentsByRendu(true,page,limit)
+    .subscribe((data:Pagination<Assignment>) => {
+      this.dataDone = data;
+      this.done = data.docs;
+      console.log("Données reçues");
     });
   }
 }

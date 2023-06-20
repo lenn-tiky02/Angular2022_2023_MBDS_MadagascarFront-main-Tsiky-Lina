@@ -1,6 +1,16 @@
 <div class="container">
     <div class="row">
       <div class="col-sm">
+
+        <mat-paginator 
+        [pageSizeOptions]="[5, 10, 20]" 
+        showFirstLastButtons 
+        aria-label="Selection de la page des étudiants"
+        (page)="handlePageTodo($event)" 
+        class="demo-paginator" 
+        [length]="dataTodo.totalDocs" 
+        [pageSize]="dataTodo.limit" 
+        [pageIndex]="dataTodo.page-1"></mat-paginator>
             <h2>Devoirs non rendu</h2>            
             <div
                 cdkDropList
@@ -44,6 +54,15 @@
             </div>
       </div>
       <div class="col-sm">                    
+        <mat-paginator 
+        [pageSizeOptions]="[5, 10, 20]" 
+        showFirstLastButtons 
+        aria-label="Selection de la page des étudiants"
+        (page)="handlePageDone($event)" 
+        class="demo-paginator" 
+        [length]="dataDone.totalDocs" 
+        [pageSize]="dataDone.limit" 
+        [pageIndex]="dataDone.page-1"></mat-paginator>
             <h2>Devoirs rendu</h2>
             
             <div

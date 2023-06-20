@@ -18,12 +18,12 @@ assignments:Assignment[] = []
     uri_api = `${environment.base_url}/api/assignments`;
 
 
-  getAssignmentsByRendu(rendu:Boolean):Observable<any> {
+  getAssignmentsByRendu(rendu:Boolean, page:number=1,limit:number=10):Observable<any> {
     // normalement on doit envoyer une requête HTTP
     // sur un web service, et ça peut prendre du temps
     // On a donc besoin "d'attendre que les données arrivent".
     // Angular utilise pour cela la notion d'Observable
-    return this.http.get<Assignment[]>(this.uri_api + "/rendu/" + rendu );
+    return this.http.get<Assignment[]>(this.uri_api + "/rendu/" + rendu + "?page=" + page + "&limit=" + limit);
     
     // of() permet de créer un Observable qui va
     // contenir les données du tableau assignments
