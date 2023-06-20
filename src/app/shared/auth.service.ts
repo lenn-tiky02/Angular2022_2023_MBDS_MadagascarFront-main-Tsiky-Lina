@@ -43,6 +43,7 @@ export class AuthService {
 
   logOut() {
     sessionStorage.removeItem('auth_token');
+    sessionStorage.removeItem('username');
     this.loggedIn = false;
     this.router.navigate(['/']);
   }
