@@ -97,7 +97,11 @@ assignments:Assignment[] = []
   }
 
   deleteAssignment(assignment:Assignment):Observable<any> {
-    return this.http.delete(this.uri_api + "/" + assignment._id)
+    return this.http.delete(this.uri_api + "/" + assignment._id,{
+      headers:{
+        'x-access-token':`${sessionStorage.getItem('auth_token')}`
+      }
+    })
       // pour supprimer on passe à la méthode splice
     // l'index de l'assignment à supprimer et 
     // le nombre d'éléments à supprimer (ici 1)

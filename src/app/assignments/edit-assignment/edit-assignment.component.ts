@@ -23,30 +23,30 @@ export class EditAssignmentComponent implements OnInit {
   dateDeRendu!: Date;
   idMatiere!: string;
   idStudent!: string;
-  matieres:Pagination<Matiere> = new Pagination<Matiere>();
-  students:Pagination<Student> = new Pagination<Student>();
-  remarque!:string;
-  note!:number|any;
+  matieres: Pagination<Matiere> = new Pagination<Matiere>();
+  students: Pagination<Student> = new Pagination<Student>();
+  remarque!: string;
+  note!: number | any;
 
   constructor(
     private assignmentsService: AssignmentsService,
     private route: ActivatedRoute,
     private router: Router,
     private spinnerService: SpinnerService,
-    private matiereService:MatieresService,
-    private studentService:StudentsService,
-    private dialog:MatDialog
+    private matiereService: MatieresService,
+    private studentService: StudentsService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.getAssignment();
     this.matiereService.getAllMatieres().subscribe(
-      (data:Pagination<Matiere>)=>{
+      (data: Pagination<Matiere>) => {
         this.matieres = data;
       }
     );
     this.studentService.getAllStudents().subscribe(
-      (data:Pagination<Student>)=>{
+      (data: Pagination<Student>) => {
         this.students = data;
       }
     );
@@ -102,12 +102,12 @@ export class EditAssignmentComponent implements OnInit {
         this.spinnerService.hide();
         // navigation vers la home page
         this.router.navigate(['/assignments']);
-      },(err)=>{
+      }, (err) => {
         console.log(err);
         this.spinnerService.hide();
         let ref = this.dialog.open(ErrorDialogComponent);
-        ref.componentInstance.message= err.error.message;
-        ref.afterClosed().subscribe(param=>{
+        ref.componentInstance.message = err.error.message || err.error;
+        ref.afterClosed().subscribe(param => {
           window.location.reload();
         });
       });
