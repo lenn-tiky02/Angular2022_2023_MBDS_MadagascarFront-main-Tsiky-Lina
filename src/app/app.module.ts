@@ -53,6 +53,7 @@ import { DialogDataDialogComponent } from './dialog-data-dialog/dialog-data-dial
 import { MatieresComponent } from './matieres/matieres.component';
 import { AddMatiereComponent } from './matieres/add-matiere/add-matiere.component';
 import { DialogNoterDevoirComponent } from './dialog-noter-devoir/dialog-noter-devoir.component';
+import { ErrorDialogComponent } from './component/error-dialog/error-dialog.component';
 const routes: Routes = [
   {
     path: '',
@@ -133,7 +134,8 @@ const routes: Routes = [
     DialogDataDialogComponent,
     MatieresComponent,
     AddMatiereComponent,
-    DialogNoterDevoirComponent
+    DialogNoterDevoirComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -156,4 +158,5 @@ const routes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
