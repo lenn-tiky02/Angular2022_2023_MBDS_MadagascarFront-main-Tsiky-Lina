@@ -2,5 +2,6 @@
     border-radius: 50%; /* Set the border radius to 50% to create a circular shape */
     width: 40px; /* Adjust the width and height as needed */
     height: 40px;
+    cursor:pointer;
   }
   
