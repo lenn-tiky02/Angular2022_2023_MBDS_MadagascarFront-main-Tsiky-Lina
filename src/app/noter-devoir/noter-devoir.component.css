@@ -16,6 +16,7 @@
   }
   
   .example-box {
+    height: 250px;
     padding: 20px 10px;
     border-bottom: solid 1px #ccc;
     color: rgba(0, 0, 0, 0.87);
@@ -110,5 +111,6 @@
 mat-card {
   background-color: #ccc;
   width: 100%;
+  height: 100%;
   padding: 20px;
 }
