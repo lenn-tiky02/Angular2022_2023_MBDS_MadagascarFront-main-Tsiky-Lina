@@ -12,6 +12,7 @@ import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from '../assignments/assignment.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogNoterDevoirComponent } from '../dialog-noter-devoir/dialog-noter-devoir.component';
+import { Pagination } from '../helper/pagination.model';
 
 @Component({
   selector: 'app-noter-devoir',
@@ -41,14 +42,14 @@ export class NoterDevoirComponent {
     console.log("On va chercher les assignments dans le service");
 
     this.assignmentsService.getAssignmentsByRendu(false)
-    .subscribe(data => {
-      this.todo = data;
+    .subscribe((data:Pagination<Assignment>) => {
+      this.todo = data.docs;
       console.log("Données reçues");
     });
 
     this.assignmentsService.getAssignmentsByRendu(true)
-    .subscribe(data => {
-      this.done = data;
+    .subscribe((data:Pagination<Assignment>) => {
+      this.done = data.docs;
       console.log("Données reçues");
     });
   }

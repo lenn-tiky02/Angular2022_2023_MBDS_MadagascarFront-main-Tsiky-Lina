@@ -11,13 +11,34 @@
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let item of todo" cdkDrag>
                     <mat-card>
-                        <p>{{item.nom}}</p>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h3>
+                                    {{item.nom}} 
+                                </h3>
+                            </div>
+                            <div class="col-sm-4"  >
+                                <img [src]="item.matiere?.at(0)?.matierePicture" alt=""  class="circular-image"> 
+                                &nbsp;
+                                <span>{{item.matiere?.at(0)?.name}}</span>
+                            </div>
+                        </div>
                         <mat-divider></mat-divider>
                         <br>
-                        <p>    
-                            Note: {{item.note}}  <br> 
-                            Date: {{item.dateDeRendu}}                            
-                        </p>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img [src]="item.auteur?.at(0)?.picture" alt="" class="circular-image">
+                            </div>
+                            <div class="col-sm-5">
+                                Nom : {{item.auteur?.at(0)?.firstname}}
+                                Prénom : {{item.auteur?.at(0)?.name}}
+
+                            </div>    
+                            <div class="col-sm-5">
+                                Note: {{item.note}} /20 <br> 
+                                Date: {{item.dateDeRendu}}                            
+                            </div>    
+                        </div>
                     </mat-card>                    
                 </div>
             </div>
@@ -34,13 +55,34 @@
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let item of done" cdkDrag>
                     <mat-card>
-                        <p>{{item.nom}}</p>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h3>
+                                    {{item.nom}} 
+                                </h3>
+                            </div>
+                            <div class="col-sm-4"  >
+                                <img [src]="item.matiere?.at(0)?.matierePicture" alt=""  class="circular-image"> 
+                                &nbsp;
+                                <span>{{item.matiere?.at(0)?.name}}</span>
+                            </div>
+                        </div>
                         <mat-divider></mat-divider>
                         <br>
-                        <p>    
-                            Note: {{item.note}}  <br> 
-                            Date: {{item.dateDeRendu}}                            
-                        </p>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img [src]="item.auteur?.at(0)?.picture" alt="" class="circular-image">
+                            </div>
+                            <div class="col-sm-5">
+                                Nom : {{item.auteur?.at(0)?.firstname}}
+                                Prénom : {{item.auteur?.at(0)?.name}}
+
+                            </div>    
+                            <div class="col-sm-5">
+                                Note: {{item.note}} /20 <br> 
+                                Date: {{item.dateDeRendu}}                            
+                            </div>    
+                        </div>
                     </mat-card>   
                 </div>
             </div>
