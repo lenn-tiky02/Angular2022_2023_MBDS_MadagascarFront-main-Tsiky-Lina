@@ -9,10 +9,10 @@ import {
   CdkDropList,
 } from '@angular/cdk/drag-drop';
 import { AssignmentsService } from '../shared/assignments.service';
-import { Assignment } from '../assignments/assignment.model';
+import { Assignment } from 'src/app/assignments/assignment.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogNoterDevoirComponent } from '../dialog-noter-devoir/dialog-noter-devoir.component';
-import { Pagination } from '../helper/pagination.model';
+import { Pagination } from 'src/app/helper/pagination.model';
 
 @Component({
   selector: 'app-noter-devoir',
