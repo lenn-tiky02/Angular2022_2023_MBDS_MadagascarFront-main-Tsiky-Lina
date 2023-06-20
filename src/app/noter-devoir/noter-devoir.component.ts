@@ -114,11 +114,7 @@ export class NoterDevoirComponent {
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        
-        console.log(result);
-        resolve(result!==undefined)
-      //  this.assignment = result;
+        resolve(result)
       });
     });
 

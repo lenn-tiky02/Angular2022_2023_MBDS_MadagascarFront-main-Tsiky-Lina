@@ -76,13 +76,14 @@ assignments:Assignment[] = []
     //return of(`Assignment ${assignment.nom} ajouté avec succès`);
   }
 
-  updateAssignment(assignment:Assignment):Observable<any> {
+  updateAssignment(assignment:Assignment,admin:boolean=false):Observable<any> {
     // Normalement : on appelle un web service pour l'update des
     // données
 
-
+    let url = this.uri_api;
+    if(admin) url = `${url}?admin=true`;
  
-    return this.http.put<Assignment>(this.uri_api, assignment,{
+    return this.http.put<Assignment>(url, assignment,{
       headers:{
         'x-access-token':`${sessionStorage.getItem('auth_token')}`
       }
