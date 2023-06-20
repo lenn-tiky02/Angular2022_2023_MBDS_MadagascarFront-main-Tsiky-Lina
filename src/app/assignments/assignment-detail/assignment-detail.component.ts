@@ -21,7 +21,9 @@ export class AssignmentDetailComponent implements OnInit {
     // appelée avant le rendu du composant
     // on va chercher l'id dans l'url active
     // en mettant + on force la conversion en number
-    const id = +this.route.snapshot.params['id'];
+    this.route.params.subscribe(params=>{
+      const id = params['id'];
+
     console.log("Dans le ngOnInit de detail, id = " + id);
 
     // on va chercher l'assignment à afficher
@@ -29,6 +31,8 @@ export class AssignmentDetailComponent implements OnInit {
       .subscribe(assignment => {
         this.assignmentTransmis = assignment;
       });
+    })
+
   }
 
   onDeleteAssignment() {
@@ -67,7 +71,7 @@ export class AssignmentDetailComponent implements OnInit {
     // path = "/assignment/" + this.assignmentTransmis?.id + "/edit";
     // this.router.navigate([path]);
     // c'est pour vous montrer la syntaxe avec [...]
-    this.router.navigate(["/assignments", this.assignmentTransmis?.id, "edit"],
+    this.router.navigate(["/assignments", this.assignmentTransmis?._id, "edit"],
     {
       queryParams: {
         nom: this.assignmentTransmis?.nom,

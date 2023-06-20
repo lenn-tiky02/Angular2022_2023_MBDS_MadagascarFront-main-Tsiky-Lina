@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Assignment } from '../assignments/assignment.model';
 import { Observable, catchError, forkJoin, map, of, tap } from 'rxjs';
 import { LoggingService } from './logging.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { bdInitialAssignments } from './data';
 import { environment } from 'src/environments/environment';
 
@@ -42,29 +42,10 @@ assignments:Assignment[] = []
     //return of(this.assignments);
   }
 
-  getAssignment(id:number):Observable<Assignment|undefined> {
+  getAssignment(id:string|any):Observable<Assignment|undefined> {
     // Plus tard on utilisera un Web Service et une BD
-    return this.http.get<Assignment|undefined>(`${this.uri_api}/${id}`)
-   
-    .pipe(
-      map(a => {
-        if(a) {
-          a.nom += " MAP MAP MAP";
-        }
-        return a;
-      }),
-      tap(a => {
-        if(a)
-          console.log("ICI DANS LE TAP " + a.nom)
-      }),
-      map(a => {
-        if(a) {
-          a.nom += " TOTOTOTO";
-        }
-        return a;
-      }),
-      catchError(this.handleError<Assignment>("Erreur dans le traitement de assignment avec id = " + id))
-    )
+    console.log(`${this.uri_api}/${id}`)
+    return this.http.get<Assignment|undefined>(`${this.uri_api}/${id}`);
     
     // On va chercher dans le tableau des assignments
     // l'assignment dont l'id est celui passé en paramètre
@@ -98,7 +79,14 @@ assignments:Assignment[] = []
   updateAssignment(assignment:Assignment):Observable<any> {
     // Normalement : on appelle un web service pour l'update des
     // données
-    return this.http.put<Assignment>(this.uri_api, assignment);
+
+
+ 
+    return this.http.put<Assignment>(this.uri_api, assignment,{
+      headers:{
+        'x-access-token':`${sessionStorage.getItem('auth_token')}`
+      }
+    });
 
     // dans la version tableau : rien à faire (pourquoi ? Parceque assignment
     // est déjà un élément du tableau this.assignments)

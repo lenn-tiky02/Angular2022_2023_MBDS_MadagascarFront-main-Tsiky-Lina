@@ -52,6 +52,7 @@ import { NoterDevoirComponent } from './noter-devoir/noter-devoir.component';
 import { DialogDataDialogComponent } from './dialog-data-dialog/dialog-data-dialog.component';
 import { MatieresComponent } from './matieres/matieres.component';
 import { AddMatiereComponent } from './matieres/add-matiere/add-matiere.component';
+import { ErrorDialogComponent } from './component/error-dialog/error-dialog.component';
 const routes: Routes = [
   {
     path: '',
@@ -131,7 +132,8 @@ const routes: Routes = [
     NoterDevoirComponent,
     DialogDataDialogComponent,
     MatieresComponent,
-    AddMatiereComponent
+    AddMatiereComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
