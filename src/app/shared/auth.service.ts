@@ -27,6 +27,7 @@ export class AuthService {
       this.http.post(this.uri_api, { username: userName, password: password }).subscribe(
         (data: any) => {
           sessionStorage.setItem("auth_token", data.token);
+          sessionStorage.setItem('username',userName);
           this.loggedIn = true;
           resolve({ message: "Connection réussie" });
           this.router.navigate(['/']);

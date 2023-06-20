@@ -53,7 +53,7 @@ export class AppComponent {
 
   isLogged() {
     if(this.authService.loggedIn) {
-      this.nom = "Michel Buffa";
+      this.nom = sessionStorage.getItem('username') || '';
       this.labelConnexion="Se déconnecter";
     }else {
       this.labelConnexion = "Se connecter";
