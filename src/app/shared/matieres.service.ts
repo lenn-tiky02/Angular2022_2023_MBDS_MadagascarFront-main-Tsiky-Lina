@@ -20,4 +20,8 @@ export class MatieresService {
   addMatiere(matiere:Matiere):Observable<any>{
     return this.http.post(this.uri_api,matiere); 
   }
+
+  getAllMatieres():Observable<any>{
+    return this.http.get(`${this.uri_api}/all`);
+  }
 }

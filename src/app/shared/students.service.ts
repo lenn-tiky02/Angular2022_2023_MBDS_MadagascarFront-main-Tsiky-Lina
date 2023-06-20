@@ -18,6 +18,10 @@ Students:Student[] = []
     //uri_api = 'http://localhost:8010/api/students';
     uri_api = `${environment.base_url}/api/students`;
 
+    getAllStudents():Observable<any>{
+      return this.http.get(`${this.uri_api}/all`);
+    }
+
   getStudents(page:number, limit:number):Observable<any> {
     // normalement on doit envoyer une requête HTTP
     // sur un web service, et ça peut prendre du temps

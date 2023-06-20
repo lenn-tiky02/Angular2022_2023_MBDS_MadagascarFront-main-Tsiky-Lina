@@ -12,6 +12,20 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
+    <mat-form-field>
+        <mat-label>Matieres</mat-label>
+        <mat-select matInput [(ngModel)]="idMatiere"  name="idMatiere">
+            <mat-option *ngFor="let matiere of matieres.docs" [value]="matiere._id">{{matiere.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Etudiant</mat-label>
+        <mat-select matInput [(ngModel)]="idStudent"  name="idStudent">
+            <mat-option *ngFor="let etu of students.docs" [value]="etu._id">{{etu.firstname}} {{etu.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
     <button mat-stroked-button color="primary">
         Ajouter un devoir
     </button>
